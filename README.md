@@ -2,4 +2,4 @@
 
 Project Lead: Kate Conkright  
 
-Project Members: Emma Linhart, Lilly Wu
+Project Members: Emma Linhart, Lilly Wu, Charlotte Parent
