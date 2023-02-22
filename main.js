@@ -22,151 +22,49 @@ import {
   } from 'ol/interaction.js';
 import {Heatmap as HeatmapLayer} from 'ol/layer.js';
 
-const origin_loc = fromLonLat([-0.12755, 51.507222]);
-const michigan_loc = fromLonLat([-84, 45]);
+// Optional variables to make dict easier
+const michigan_loc = fromLonLat([-0.12755, 51.507222])
+const london_loc = fromLonLat([-84, 45])
 
-/*
-const earthquakeFill = new Fill({
-    color: 'rgba(255, 153, 0, 0.8)',
-  });
-  const earthquakeStroke = new Stroke({
-    color: 'rgba(255, 204, 0, 0.2)',
-    width: 1,
-  });
-  const textFill = new Fill({
-    color: '#fff',
-  });
-  const textStroke = new Stroke({
-    color: 'rgba(0, 0, 0, 0.6)',
-    width: 3,
-  });
-  const invisibleFill = new Fill({
-    color: 'rgba(255, 255, 255, 0.01)',
-  });
-  
-  function createEarthquakeStyle(feature) {
-    // 2012_Earthquakes_Mag5.kml stores the magnitude of each earthquake in a
-    // standards-violating <magnitude> tag in each Placemark.  We extract it
-    // from the Placemark's name instead.
-    const name = feature.get('name');
-    const magnitude = parseFloat(name.substr(2));
-    const radius = 5 + 20 * (magnitude - 5);
-  
-    return new Style({
-      geometry: feature.getGeometry(),
-      image: new RegularShape({
-        radius1: radius,
-        radius2: 3,
-        points: 5,
-        angle: Math.PI,
-        fill: earthquakeFill,
-        stroke: earthquakeStroke,
-      }),
-    });
-  }
-  
-  let maxFeatureCount;
-  let vector = null;
-  const calculateClusterInfo = function (resolution) {
-    maxFeatureCount = 0;
-    const features = vector.getSource().getFeatures();
-    let feature, radius;
-    for (let i = features.length - 1; i >= 0; --i) {
-      feature = features[i];
-      const originalFeatures = feature.get('features');
-      const extent = createEmpty();
-      let j, jj;
-      for (j = 0, jj = originalFeatures.length; j < jj; ++j) {
-        extend(extent, originalFeatures[j].getGeometry().getExtent());
-      }
-      maxFeatureCount = Math.max(maxFeatureCount, jj);
-      radius = (0.25 * (getWidth(extent) + getHeight(extent))) / resolution;
-      feature.set('radius', radius);
-    }
-  };
+// Variables to customise main.js file for each Species
+const page_dict = {
+    "/SpeciesPages/RoundGoby.html": {
+        "kml_data": "test_data.kml",
+        "invasive_loc": michigan_loc,
+        "origin_loc": london_loc,
+        "invasive_zoom": 5.7,
+        "origin_zoom": 5.7,
+    }, 
 
-let currentResolution;
-function styleFunction(feature, resolution) {
-  if (resolution != currentResolution) {
-    calculateClusterInfo(resolution);
-    currentResolution = resolution;
-  }
-  let style;
-  const size = feature.get('features').length;
-  if (size > 1) {
-    style = new Style({
-      image: new CircleStyle({
-        radius: feature.get('radius'),
-        fill: new Fill({
-          color: [255, 153, 0, Math.min(0.8, 0.4 + size / maxFeatureCount)],
-        }),
-      }),
-      text: new Text({
-        text: size.toString(),
-        fill: textFill,
-        stroke: textStroke,
-      }),
-    });
-  } else {
-    const originalFeature = feature.get('features')[0];
-    style = createEarthquakeStyle(originalFeature);
-  }
-  return style;
 }
 
-function selectStyleFunction(feature) {
-    const styles = [
-      new Style({
-        image: new CircleStyle({
-          radius: feature.get('radius'),
-          fill: invisibleFill,
-        }),
-      }),
-    ];
-    const originalFeatures = feature.get('features');
-    let originalFeature;
-    for (let i = originalFeatures.length - 1; i >= 0; --i) {
-      originalFeature = originalFeatures[i];
-      styles.push(createEarthquakeStyle(originalFeature));
-    }
-    return styles;
-  }
+// Initialize variables for species map
+const currentPage = window.location.pathname
+const species_dict = page_dict[currentPage]
 
-  vector = new VectorLayer({
-    source: new Cluster({
-      distance: 40,
-      source: new VectorSource({
-        url: '/Geo_data/data.kml/',
-        format: new KML({
-          extractStyles: false,
-        }),
-      }),
-    }),
-    style: styleFunction,
-  });
-  
-*/
+const invasive_loc = species_dict["invasive_loc"] // fromLonLat([-0.12755, 51.507222]);
+const origin_loc = species_dict["origin_loc"] // fromLonLat([-84, 45]);
+const kml_data = species_dict["kml_data"]
+const invasive_zoom = species_dict["invasive_zoom"]
+const origin_zoom = species_dict["origin_zoom"]
 
+/*
 const view = new View({
     center: transform([-84, 45], 'EPSG:4326', 'EPSG:3857'),
+    zoom: 5.7
+});*/
+
+const view = new View({
+    center: origin_loc,
     zoom: 5.7
 });
 
 const blur = document.getElementById('blur');
 const radius = document.getElementById('radius');
 
-/*
-features : [
-        new Feature({ geometry : new Point([ -6005420.749222653, 6000508.181331601 ]) }),
-        new Feature({ geometry : new Point([ -6015421.749222653, 6010507.181331601 ]) }),
-        new Feature({ geometry : new Point([ -6025422.749222653, 6020506.181331601 ]) }),
-        new Feature({ geometry : new Point([ -6035423.749222653, 6030505.181331601 ]) }),
-      ],
-*/
-
 const vector = new HeatmapLayer({
     source : new VectorSource({
-        url: '/Geo_data/data.kml',
+        url: "/geoData/".concat(kml_data),
         format: new KML(),
     }),
     declutter : true,
@@ -227,7 +125,7 @@ onClick('fly-to-origin', function(){
 })
 
 onClick('fly-to-michigan', function(){
-    flyTo(michigan_loc, function(){});
+    flyTo(invasive_loc, function(){});
 })
 
 blur.addEventListener('input', function () {
