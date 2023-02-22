@@ -155,14 +155,19 @@ const view = new View({
 const blur = document.getElementById('blur');
 const radius = document.getElementById('radius');
 
-const vector = new HeatmapLayer({
-    source : new VectorSource({
-      features : [
+/*
+features : [
         new Feature({ geometry : new Point([ -6005420.749222653, 6000508.181331601 ]) }),
         new Feature({ geometry : new Point([ -6015421.749222653, 6010507.181331601 ]) }),
         new Feature({ geometry : new Point([ -6025422.749222653, 6020506.181331601 ]) }),
         new Feature({ geometry : new Point([ -6035423.749222653, 6030505.181331601 ]) }),
       ],
+*/
+
+const vector = new HeatmapLayer({
+    source : new VectorSource({
+        url: '/Geo_data/data.kml',
+        format: new KML(),
     }),
     declutter : true,
   });
