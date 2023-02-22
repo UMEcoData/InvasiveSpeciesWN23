@@ -5,14 +5,22 @@
     <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/display.js"></script>
-    <link rel="stylesheet" href="species_style.css">
+    <!-- <link rel="stylesheet" href="species_style.css"> -->
     <title>Invasive Species Project Website</title>
   </head>
   <body>
     <div>Round Goby</div>
     <button onclick = "window.location.href='/index.html'">Menu</button>
     <p>Species Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget.</p>
-    <img src="">
+    <!--<img src="">-->
+
+    <form>
+        <label for="radius">radius size</label>
+        <input id="radius" type="range" min="1" max="50" step="1" value="5"/>
+        <label for="blur">blur size</label>
+        <input id="blur" type="range" min="1" max="50" step="1" value="15"/>
+      </form>
+
     <div>
         <button onclick="showMap()">Map</button>
         <button onclick="showRecipes()">Recipes</button>
