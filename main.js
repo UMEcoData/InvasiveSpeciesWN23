@@ -8,6 +8,7 @@ import {
     RegularShape,
     Stroke,
     Style,
+    Icon,
     Text,
   } from 'ol/style.js';
 import TileLayer from 'ol/layer/Tile';
@@ -22,14 +23,31 @@ import {
   } from 'ol/interaction.js';
 import {Heatmap as HeatmapLayer} from 'ol/layer.js';
 
+/*
+Possible Additional Features
+https://openlayers.org/en/latest/examples/icon.html
+1. Pinned Location on where they were first found
+2. Restaurants serving this species
+
+EDDMapS. 2023. Early Detection & Distribution Mapping System. The University of Georgia - Center for Invasive Species and Ecosystem Health. Available online at http://www.eddmaps.org/; last accessed March 7, 2023.
+*/
+
+
 // Optional variables to make dict easier
-const michigan_loc = fromLonLat([-0.12755, 51.507222])
-const london_loc = fromLonLat([-84, 45])
+const michigan_loc = fromLonLat([-84, 45])
+const london_loc = fromLonLat([-0.12755, 51.507222])
 
 // Variables to customise main.js file for each Species
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
-        "kml_data": "test_data.kml",
+        "kml_data": "roundgoby.kml",
+        "invasive_loc": michigan_loc,
+        "origin_loc": london_loc,
+        "invasive_zoom": 5.7,
+        "origin_zoom": 5.7,
+    }, 
+    "/SpeciesPages/ZebraQuaggaMussels.html": {
+        "kml_data": "roundgoby.kml",
         "invasive_loc": michigan_loc,
         "origin_loc": london_loc,
         "invasive_zoom": 5.7,
@@ -47,16 +65,12 @@ const origin_loc = species_dict["origin_loc"] // fromLonLat([-84, 45]);
 const kml_data = species_dict["kml_data"]
 const invasive_zoom = species_dict["invasive_zoom"]
 const origin_zoom = species_dict["origin_zoom"]
+  
 
-/*
-const view = new View({
-    center: transform([-84, 45], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 5.7
-});*/
 
 const view = new View({
-    center: origin_loc,
-    zoom: 5.7
+    center: invasive_loc,
+    zoom: invasive_zoom
 });
 
 const blur = document.getElementById('blur');

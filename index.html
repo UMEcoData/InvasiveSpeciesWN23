@@ -5,54 +5,38 @@
     <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invasive Species Project Website</title>
-    <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-    }
-    .container {
-      display: grid;
-      height: 50vh;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 6fr 1fr;
-      margin: 0px 30px 0px 30px;
-      gap: 20px 20px
-    }
-    .cell {
-      background-color: gray;
-      padding: 20px;
-      font-size: 30px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0px 30px 0px 30px;
-      font-size: 6vh;
-      padding: 2.5vh 0;
-    }
-    h2 {
-      margin: 0px 30px 0px 30px;
-      font-size: 3vh;
-    }
-    h3 {
-      margin: 0px 30px 0px 30px;
-      font-size: 4vh;
-      padding: 2.5vh 0;
-    }
-    </style>
+    <link rel="stylesheet" href="/styleSheets/home.css">
   </head>
   <body>
     <h1 style="height:10vh">Invasive Species Project</h1>
     <h2 style="height:25vh">Background Info/Goals/etc Species Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
     <h3 style="height:5vh">Notable Species in The Great Lakes:</h3>
     <div class="container">
-    <div class="cell">Round Goby: [species picture/info]</div>
-    <div class="cell">[species picture/info]</div>
-    <div class="cell">[species picture/info]</div>
-    <div class="cell">[species picture/info]</div>
-    <button onclick = "window.location.href='/SpeciesPages/RoundGoby.html'">Learn More!</button>
-    <button onclick = "window.location.href='/SpeciesPages/ZebraQuaggaMussels.html'">Learn More!</button>
-    <button>Learn More!</button>
-    <button>Learn More!</button>
+    
+    <div class="cell">
+        <p>The Round Goby</p>
+        <img src="/speciesImages/roundgoby.jpg">
+        <button onclick = "window.location.href='/SpeciesPages/RoundGoby.html'">Learn More!</button>
+    </div>
+    
+    <div class="cell">
+        <p>Zebra and Quagga Mussels</p>
+        <img src="/speciesImages/mussel.jpg">
+        <button onclick = "window.location.href='/SpeciesPages/ZebraQuaggaMussels.html'">Learn More!</button>
+    </div>
+
+    <div class="cell">
+        <p>[species picture/info]</p>
+        <img src="/speciesImages/third.jpg">
+        <button onclick = "window.location.href='fill_in'">Learn More!</button>
+    </div>
+
+    <div class="cell">
+        <p>[species picture/info]</p>
+        <img src="/speciesImages/fourth.jpg">
+        <button onclick = "window.location.href='fill_in'">Learn More!</button>
+    </div>
+
     </div>
   </body>
 </html>
