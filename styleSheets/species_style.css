@@ -9,3 +9,9 @@
 #show_analyses {
     display: none;
 }
+
+/* Title/Desciption Section */
+
+#desc {
+    font-weight: normal;
+}
