@@ -12,14 +12,24 @@
     <div>Round Goby</div>
 
     <button onclick = "window.location.href='/index.html'">Menu</button>
-    <p>Species Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac elit sed leo blandit dictum at non arcu. Sed lacinia leo eget elit gravida pellentesque. d eget.</p>
+    <p>The Round Goby, similar to most invasive species, can flourish in many habitats and environments. That quality, paired with its agressive nature and high spawn rate, make the Round Goby a menace to the Great Lakes Region</p>
+
+    <p>
+        Possible things to add to this website!
+        Datapins -
+            (information on baltic sea and how they got to michigan), 
+            (information on where they were first found),
+            (where they're most harmful)
+
+
+    </p>
     <!--<img src="">-->
 
     <form>
         <label for="radius">radius size</label>
-        <input id="radius" type="range" min="1" max="5" step="1" value="3"/>
+        <input id="radius" type="range" min="1" max="4" step="1" value="1"/>
         <label for="blur">blur size</label>
-        <input id="blur" type="range" min="1" max="5" step="1" value="5"/>
+        <input id="blur" type="range" min="1" max="4" step="1" value="3"/>
     </form>
 
     <div>
@@ -27,6 +37,13 @@
         <button onclick="showRecipes()">Recipes</button>
         <button onclick="showAnalyses()">Analyses</button>
     </div>
+
+    <p>Map Usage</p>
+    <ul>
+        <li>Use the radius and blur bar to modify the map display. The data, taken from EDDMaps, shows reported sightings of the species</li>
+        <li>click the "Fly to Invasive Species Origin" button to see where the species orginated from</li>
+        <li>Etc.</li>
+      </ul>
     <div id="show_map">
         <div id="map"></div>
         <script type="module" src="/main.js"></script>

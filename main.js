@@ -36,15 +36,16 @@ EDDMapS. 2023. Early Detection & Distribution Mapping System. The University of 
 // Optional variables to make dict easier
 const michigan_loc = fromLonLat([-84, 45])
 const london_loc = fromLonLat([-0.12755, 51.507222])
+const goby_origin_loc = fromLonLat([41.0, 42.0])
 
 // Variables to customise main.js file for each Species
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
         "kml_data": "roundgoby.kml",
         "invasive_loc": michigan_loc,
-        "origin_loc": london_loc,
-        "invasive_zoom": 5.7,
-        "origin_zoom": 5.7,
+        "origin_loc": goby_origin_loc,
+        "invasive_zoom": 5.3,
+        "origin_zoom": 5,
     }, 
     "/SpeciesPages/ZebraQuaggaMussels.html": {
         "kml_data": "roundgoby.kml",
@@ -98,7 +99,7 @@ const map = new Map({
 function onClick(id, callback) {
     document.getElementById(id).addEventListener('click', callback);
 }
-function flyTo(location, done) {
+function flyTo(location, new_zoom, done) {
     const duration = 2000;
     const zoom = View.zoom;
     let parts = 2;
@@ -116,18 +117,18 @@ function flyTo(location, done) {
     view.animate(
       {
         center: location,
-        zoom: 5.7,
+        zoom: new_zoom,
         duration: duration,
       },
       callback
     );
     view.animate(
       {
-        zoom: zoom - 1,
+        zoom: new_zoom - 1,
         duration: duration / 2,
       },
       {
-        zoom: zoom,
+        zoom: new_zoom,
         duration: duration / 2,
       },
       callback
@@ -135,11 +136,11 @@ function flyTo(location, done) {
   }
 
 onClick('fly-to-origin', function(){
-    flyTo(origin_loc, function(){});
+    flyTo(origin_loc, origin_zoom, function(){});
 })
 
 onClick('fly-to-michigan', function(){
-    flyTo(invasive_loc, function(){});
+    flyTo(invasive_loc, invasive_zoom, function(){});
 })
 
 blur.addEventListener('input', function () {
