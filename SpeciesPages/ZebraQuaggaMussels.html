@@ -10,26 +10,35 @@
   </head>
   <body>
     <button onclick = "window.location.href='/index.html'">Menu</button>
-    <div class="ZebraQuagga">
-      <h1>Zebra and Quagga Mussels</h1>
-      <h3>Description:</h3>
-      <h3 id="desc">
-        Zebra mussels (Dreissena polymorpha) are invasive species about the size of a fingernail. 
-        They are native to freshwaters in Russia and Ukraine but were introduced to the Great Lakes 
-        Region in the 1980s from a transatlantic vessel. In a decade, they colonized the river basins 
-        of the Great Lakes and beyond in Mississippi, Tennessee, and Ohio.
-      </h3>
-      <h3 id="desc">
-        Quagga mussels (Dreissena bugensis) are a cousin species of the Zebra mussel and are also 
-        invasive to the Great Lakes Region. Like the Zebra mussel, they are native to freshwaters 
-        in Russia and Ukraine [cite] but were introduced later in 1989 in a similar manner from 
-        transatlantic vessels. They are now also found in lakes in Nevada and California.
-      </h3>
-
+    <h1>Zebra and Quagga Mussels</h1>
+    <div class="row">
+      <div class="leftCol">
+        <h3>Description:</h3>
+        <h3 id="desc">
+          Zebra mussels (Dreissena polymorpha) are invasive species about the size of a fingernail. 
+          They are native to freshwaters in Russia and Ukraine but were introduced to the Great Lakes 
+          Region in the 1980s from a transatlantic vessel. In a decade, they colonized the river basins 
+          of the Great Lakes and beyond in Mississippi, Tennessee, and Ohio.
+        </h3>
+        <h3 id="desc">
+          Quagga mussels (Dreissena bugensis) are a cousin species of the Zebra mussel and are also 
+          invasive to the Great Lakes Region. Like the Zebra mussel, they are native to freshwaters 
+          in Russia and Ukraine [cite] but were introduced later in 1989 in a similar manner from 
+          transatlantic vessels. They are now also found in lakes in Nevada and California.
+        </h3>
+        <h3 id="desc">
+          What makes these species great at invading is their rapid reproduction rate, their ability 
+          to attach to a variety of different surfaces, and they can disperse during any life stage 
+          actively or passively downstream.
+        </h3>
+      </div>
+      <div class="rightCol">
+        <img src="/speciesImages/zebra-quagga-1-300x251.jpg" alt="Zebra and Quagga Mussels" id="zq1">
+      </div>
     </div>
-    <img src="">
 
-    <form>
+    <div class="map">
+      <form>
         <label for="radius">radius size</label>
         <input id="radius" type="range" min="1" max="5" step="1" value="3"/>
         <label for="blur">blur size</label>
@@ -52,6 +61,7 @@
     </div>
     <div id="show_analyses" style="display:none">
         <span>analyses</span>
+    </div>
     </div>
   </body>
 </html>

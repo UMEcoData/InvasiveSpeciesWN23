@@ -15,3 +15,25 @@
 #desc {
     font-weight: normal;
 }
+
+.leftCol, .rightCol {
+    float: left;
+    width: 50%;
+}
+
+#zq1 {
+    width: 80%;
+    height: auto;
+    padding-left: 80px;
+    padding-right: 0px;
+}
+
+.leftCol {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row:after {
+    display: table;
+    clear:both;
+}
