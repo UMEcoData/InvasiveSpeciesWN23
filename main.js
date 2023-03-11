@@ -37,6 +37,7 @@ EDDMapS. 2023. Early Detection & Distribution Mapping System. The University of 
 const michigan_loc = fromLonLat([-84, 45])
 const london_loc = fromLonLat([-0.12755, 51.507222])
 const goby_origin_loc = fromLonLat([41.0, 42.0])
+const atlantic_coast_loc = fromLonLat([33.329, -71.983])
 
 // Variables to customise main.js file for each Species
 const page_dict = {
@@ -54,6 +55,13 @@ const page_dict = {
         "invasive_zoom": 5.7,
         "origin_zoom": 5.7,
     }, 
+    "/SpeciesPages/Alewife.html": {
+      "kml_data": "alewife.kml",
+      "invasive_loc": michigan_loc,
+      "origin_loc": atlantic_coast_loc,
+      "invasive_zoom": 5.7,
+      "origin_zoom": 5.7,
+  }, 
 
 }
 
