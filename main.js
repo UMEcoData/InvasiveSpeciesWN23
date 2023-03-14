@@ -67,13 +67,13 @@ const page_dict = {
             {
                 "id": 2,
                 "long_lat": [0, 0],
-                "text": "Hello from marker 1!",
+                "text": "Hello from marker 2!",
                 "link": ""
             },
             {
                 "id": 3,
                 "long_lat": [50, 50],
-                "text": "Hello from marker 1!",
+                "text": "Hello from marker 3!",
                 "link": ""
             }
         ]
@@ -263,5 +263,10 @@ for (var i = 0; i < markers.length; i++){
         stopEvent: false,
     });
   map.addOverlay(marker);
+
+  // add feature to make pop up appear on overlap
+
 }
 
+// Add on click function to check if a user clicks near a marker +/- 1 degree?
+// use the popup code as a reference
