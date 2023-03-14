@@ -16,8 +16,24 @@
     font-weight: normal;
 }
 
-.popup{
-    max-width:20px;
-    max-height: 20px;
-    color: red
+.leftCol, .rightCol {
+    float: left;
+    width: 50%;
+}
+
+#zq1 {
+    width: 80%;
+    height: auto;
+    padding-left: 80px;
+    padding-right: 0px;
+}
+
+.leftCol {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row:after {
+    display: table;
+    clear:both;
 }
