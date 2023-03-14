@@ -45,6 +45,13 @@ const goby_origin_loc = fromLonLat([41.0, 42.0])
 const atlantic_coast_loc = fromLonLat([-61, 37.5])
 
 // Variables to customise main.js file for each Species
+/*
+NEW: markers list of dictionaries
+notice how id number matches
+ <img src="/Icons/pin.png" id="marker0" class="marker" />
+see RoundGoby.html for format
+*/
+
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
         "kml_data": "roundgoby.kml",
@@ -238,6 +245,7 @@ const popup = new Overlay({
 });
 map.addOverlay(popup);
 
+// use this as example for techincal task!
 const element = popup.getElement();
 map.on('click', function (evt) {
     const coordinate = evt.coordinate;
@@ -259,6 +267,7 @@ map.on('click', function (evt) {
   
 
 // MAP feature: MARKERS !
+// https://openlayers.org/en/latest/examples/overlay.html
 for (var i = 0; i < markers.length; i++){
     let marker_dict = markers[i]
     const pos = fromLonLat(marker_dict["long_lat"]); //[16.3725, 48.208889]
@@ -272,9 +281,9 @@ for (var i = 0; i < markers.length; i++){
     });
   map.addOverlay(marker);
 
-  // add feature to make pop up appear on overlap
-
 }
 
+// https://openlayers.org/en/latest/examples/popup.html
 // Add on click function to check if a user clicks near a marker +/- 1 degree?
 // use the popup code as a reference
+// use above map.on('click' ...) as example
