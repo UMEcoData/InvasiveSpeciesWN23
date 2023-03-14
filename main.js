@@ -12,8 +12,8 @@ import {
     Text,
   } from 'ol/style.js';
 import TileLayer from 'ol/layer/Tile';
+import Overlay from 'ol/Overlay.js';
 import OSM from 'ol/source/OSM';
-import {fromLonLat} from 'ol/proj.js';
 import {transform} from 'ol/proj.js';
 import {Vector as VectorLayer} from 'ol/layer.js';
 import {Cluster, Stamen, Vector as VectorSource} from 'ol/source.js';
@@ -22,6 +22,11 @@ import {
     defaults as defaultInteractions,
   } from 'ol/interaction.js';
 import {Heatmap as HeatmapLayer} from 'ol/layer.js';
+
+import {toStringHDMS} from 'ol/coordinate.js';
+import {fromLonLat, toLonLat} from 'ol/proj.js';
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;
 
 /*
 Possible Additional Features
@@ -46,6 +51,32 @@ const page_dict = {
         "origin_loc": goby_origin_loc,
         "invasive_zoom": 5.3,
         "origin_zoom": 5,
+        "markers": [
+            {
+                "id": 0,
+                "long_lat": [16.3725, 48.208889],
+                "text": "Hello from marker 0!",
+                "link": ""
+            },
+            {
+                "id": 1,
+                "long_lat": [150, -50],
+                "text": "Hello from marker 1!",
+                "link": ""
+            },
+            {
+                "id": 2,
+                "long_lat": [0, 0],
+                "text": "Hello from marker 1!",
+                "link": ""
+            },
+            {
+                "id": 3,
+                "long_lat": [50, 50],
+                "text": "Hello from marker 1!",
+                "link": ""
+            }
+        ]
     }, 
     "/SpeciesPages/ZebraQuaggaMussels.html": {
         "kml_data": "roundgoby.kml",
@@ -61,14 +92,47 @@ const page_dict = {
 const currentPage = window.location.pathname
 const species_dict = page_dict[currentPage]
 
+// DATA and LOCATIONS
 const invasive_loc = species_dict["invasive_loc"] // fromLonLat([-0.12755, 51.507222]);
 const origin_loc = species_dict["origin_loc"] // fromLonLat([-84, 45]);
 const kml_data = species_dict["kml_data"]
 const invasive_zoom = species_dict["invasive_zoom"]
 const origin_zoom = species_dict["origin_zoom"]
+const markers = species_dict["markers"]
+console.log(markers)
+console.log(species_dict["markers"])
   
+// ICONS
+/*
+const iconFeature = new Feature({
+    geometry: new Point([0, 0]),
+    name: 'Null Island',
+    population: 4000,
+    rainfall: 500,
+});
+
+const iconStyle = new Style({
+    image: new Icon({
+      anchor: [0.5, 30],
+      anchorXUnits: 'fraction',
+      anchorYUnits: 'pixels',
+      src: '/Icons/pin.png',
+      width: 20,
+      height: 20,
+    }),
+});
+
+iconFeature.setStyle(iconStyle);
+const iconVectorSource = new VectorSource({
+    features: [iconFeature],
+  });
+const iconVectorLayer = new VectorLayer({
+    source: iconVectorSource,
+});
+*/
 
 
+// MAIN MAP RENDERING
 const view = new View({
     center: invasive_loc,
     zoom: invasive_zoom
@@ -96,9 +160,12 @@ const map = new Map({
 });
 
 
+
 function onClick(id, callback) {
     document.getElementById(id).addEventListener('click', callback);
 }
+
+// MAP feature of flying to origin location and to Michigan
 function flyTo(location, new_zoom, done) {
     const duration = 2000;
     const zoom = View.zoom;
@@ -135,6 +202,7 @@ function flyTo(location, new_zoom, done) {
     );
   }
 
+// MAP feature of flying to origin location and to Michigan
 onClick('fly-to-origin', function(){
     flyTo(origin_loc, origin_zoom, function(){});
 })
@@ -143,6 +211,7 @@ onClick('fly-to-michigan', function(){
     flyTo(invasive_loc, invasive_zoom, function(){});
 })
 
+// MAP feature of bluring and formating kml data size
 blur.addEventListener('input', function () {
     vector.setBlur(parseInt(blur.value, 10));
   });
@@ -150,3 +219,49 @@ blur.addEventListener('input', function () {
   radius.addEventListener('input', function () {
     vector.setRadius(parseInt(radius.value, 10));
   });
+
+
+// MAP feature of adding pop ups
+// useful helper to get Long_lat
+const popup = new Overlay({
+  element: document.getElementById('long_lat_popup'),
+  positioning: 'bottom-center',
+  stopEvent: false,
+});
+map.addOverlay(popup);
+
+const element = popup.getElement();
+map.on('click', function (evt) {
+    const coordinate = evt.coordinate;
+    const hdms = toStringHDMS(toLonLat(coordinate));
+    popup.setPosition(coordinate);
+    let popover = bootstrap.Popover.getInstance(element);
+    if (popover) {
+      popover.dispose();
+    }
+    popover = new bootstrap.Popover(element, {
+      animation: false,
+      container: element,
+      content: '<p>The location you clicked was:</p><code>' + hdms + '</code>',
+      html: true,
+      placement: 'top',
+    });
+    popover.show();
+});
+  
+
+// MAP feature: MARKERS !
+for (var i = 0; i < markers.length; i++){
+    let marker_dict = markers[i]
+    const pos = fromLonLat(marker_dict["long_lat"]); //[16.3725, 48.208889]
+    const element_id = "marker".concat(marker_dict["id"])
+    console.log(element_id)
+    const marker = new Overlay({
+        position: pos,
+        positioning: 'center-center',
+        element: document.getElementById(element_id),
+        stopEvent: false,
+    });
+  map.addOverlay(marker);
+}
+
