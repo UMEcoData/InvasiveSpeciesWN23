@@ -52,6 +52,18 @@ notice how id number matches
 see RoundGoby.html for format
 */
 
+/*
+Usage
+42 55' 44" N
+84 33' 29" W
+would correspond to a long_lat array of [-84.3329, 42.5544]
+
+N and E are positive
+S and W are negative
+
+N/S correspond to long_lat[1]
+E/W correspond to long_lat[0]
+*/
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
         "kml_data": "roundgoby.kml",
@@ -62,7 +74,7 @@ const page_dict = {
         "markers": [
             {
                 "id": 0,
-                "long_lat": [16.3725, 48.208889],
+                "long_lat": [-84.3329, 42.5544],
                 "text": "Hello from marker 0!",
                 "link": ""
             },
@@ -261,6 +273,7 @@ map.on('click', function (evt) {
       content: '<p>The location you clicked was:</p><code>' + hdms + '</code>',
       html: true,
       placement: 'top',
+      title: "[x, y] : North(+)/South(-) = y AND East(+)/West(-) = x ",
     });
     popover.show();
 });
