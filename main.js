@@ -66,7 +66,7 @@ E/W correspond to long_lat[0]
 */
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
-        "kml_data": "roundgoby.kml",
+        "kml_data": ["roundgoby.kml", "test_data.kml"],
         "invasive_loc": michigan_loc,
         "origin_loc": goby_origin_loc,
         "invasive_zoom": 5.3,
@@ -74,21 +74,21 @@ const page_dict = {
         "markers": [
             {
                 "id": 0,
-                "long_lat": [-84.3329, 42.5544],
-                "text": "Hello from marker 0!",
-                "link": ""
+                "long_lat": [-82.5, 42.8],
+                "text": "The Round Goby was first discovered to have been introduced to the Great Lakes in 1990 by fishermen in the St Clair River",
+                "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
                 "id": 1,
-                "long_lat": [150, -50],
-                "text": "Hello from marker 1!",
-                "link": ""
+                "long_lat": [-86.3103, 42.3446],
+                "text": "Round Gobies are excellent bait theives, so they are a nuissance to anglers.",
+                "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
                 "id": 2,
-                "long_lat": [0, 0],
-                "text": "Hello from marker 2!",
-                "link": ""
+                "long_lat": [-79.3812, 43.0133],
+                "text": "Some researchers have highlighted the possibility that there is a link between Type E avian botulism outbreaks and the Round Goby within Lakes Erie and Ontario.",
+                "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
                 "id": 3,
@@ -122,42 +122,12 @@ const species_dict = page_dict[currentPage]
 // DATA and LOCATIONS
 const invasive_loc = species_dict["invasive_loc"] // fromLonLat([-0.12755, 51.507222]);
 const origin_loc = species_dict["origin_loc"] // fromLonLat([-84, 45]);
-const kml_data = species_dict["kml_data"]
+const kml_data_array = species_dict["kml_data"]
 const invasive_zoom = species_dict["invasive_zoom"]
 const origin_zoom = species_dict["origin_zoom"]
 const markers = species_dict["markers"]
 console.log(markers)
 console.log(species_dict["markers"])
-  
-// ICONS
-/*
-const iconFeature = new Feature({
-    geometry: new Point([0, 0]),
-    name: 'Null Island',
-    population: 4000,
-    rainfall: 500,
-});
-
-const iconStyle = new Style({
-    image: new Icon({
-      anchor: [0.5, 30],
-      anchorXUnits: 'fraction',
-      anchorYUnits: 'pixels',
-      src: '/Icons/pin.png',
-      width: 20,
-      height: 20,
-    }),
-});
-
-iconFeature.setStyle(iconStyle);
-const iconVectorSource = new VectorSource({
-    features: [iconFeature],
-  });
-const iconVectorLayer = new VectorLayer({
-    source: iconVectorSource,
-});
-*/
-
 
 // MAIN MAP RENDERING
 const view = new View({
@@ -168,21 +138,28 @@ const view = new View({
 const blur = document.getElementById('blur');
 const radius = document.getElementById('radius');
 
-const vector = new HeatmapLayer({
-    source : new VectorSource({
-        url: "/geoData/".concat(kml_data),
-        format: new KML(),
-    }),
-    declutter : true,
-  });
-
 const raster = new TileLayer({
     source: new OSM(),
   });
 
+let all_layers = []
+all_layers.push(raster)
+
+for (var i = 0; i < kml_data_array.length; i++){
+    const vector = new HeatmapLayer({
+        source : new VectorSource({
+            url: "/geoData/".concat(kml_data_array[i]),
+            format: new KML(),
+        }),
+        declutter : true,
+      });
+      all_layers.push(vector)
+}
+
+//all_layers.push(vector)
 const map = new Map({
   target: 'map',
-  layers: [raster, vector],
+  layers: all_layers,
   view: view
 });
 
