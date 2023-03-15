@@ -37,6 +37,8 @@ https://openlayers.org/en/latest/examples/icon.html
 EDDMapS. 2023. Early Detection & Distribution Mapping System. The University of Georgia - Center for Invasive Species and Ecosystem Health. Available online at http://www.eddmaps.org/; last accessed March 7, 2023.
 */
 
+// https://mygeodata.cloud/converter/
+
 
 // Optional variables to make dict easier
 const michigan_loc = fromLonLat([-84, 45])
