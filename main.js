@@ -45,6 +45,9 @@ const michigan_loc = fromLonLat([-84, 45])
 const london_loc = fromLonLat([-0.12755, 51.507222])
 const goby_origin_loc = fromLonLat([41.0, 42.0])
 const atlantic_coast_loc = fromLonLat([-61, 37.5])
+const quagga_blacksea_origin = fromLonLat([34.2993, 43.413])
+// const quagga_caspian_origin = fromLonLat([])
+
 
 // Variables to customise main.js file for each Species
 /*
@@ -101,11 +104,18 @@ const page_dict = {
         ]
     }, 
     "/SpeciesPages/ZebraQuaggaMussels.html": {
-        "kml_data": ["roundgoby.kml"],
+        "kml_data": ["quagga_mussel.kml"],
         "invasive_loc": michigan_loc,
-        "origin_loc": london_loc,
+        "origin_loc": quagga_blacksea_origin,
         "invasive_zoom": 5.7,
         "origin_zoom": 5.7,
+        "markers": [
+          {
+            "id": "og1",
+            "long_lat": [34.2993, 43.413],
+            "text": "Quagga Mussel Origin 1"
+          }
+        ]
     }, 
     "/SpeciesPages/Alewife.html": {
       "kml_data": ["alewife.kml"],
