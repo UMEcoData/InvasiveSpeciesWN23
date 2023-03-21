@@ -101,14 +101,14 @@ const page_dict = {
         ]
     }, 
     "/SpeciesPages/ZebraQuaggaMussels.html": {
-        "kml_data": "roundgoby.kml",
+        "kml_data": ["roundgoby.kml"],
         "invasive_loc": michigan_loc,
         "origin_loc": london_loc,
         "invasive_zoom": 5.7,
         "origin_zoom": 5.7,
     }, 
     "/SpeciesPages/Alewife.html": {
-      "kml_data": "alewife.kml",
+      "kml_data": ["alewife.kml"],
       "invasive_loc": michigan_loc,
       "origin_loc": atlantic_coast_loc,
       "invasive_zoom": 5.7,
