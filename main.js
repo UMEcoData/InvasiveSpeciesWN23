@@ -123,6 +123,14 @@ const page_dict = {
       "origin_loc": atlantic_coast_loc,
       "invasive_zoom": 5.7,
       "origin_zoom": 5.7,
+      "markers": [
+        {
+            "id": 0,
+            "long_lat": [-79.211260, 43.057321],
+            "text": "The Alewife spread to Lake Erie and other Great Lakes through the Welland Canal",
+            "link": "https://www.invasivespeciesinfo.gov/aquatic/fish-and-other-vertebrates/alewife"
+        }
+      ]
   }, 
 
 }
