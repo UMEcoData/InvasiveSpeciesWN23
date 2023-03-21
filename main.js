@@ -165,7 +165,7 @@ const map = new Map({
   view: view
 });
 
-
+console.log(map)
 
 function onClick(id, callback) {
     document.getElementById(id).addEventListener('click', callback);
@@ -219,36 +219,42 @@ onClick('fly-to-michigan', function(){
 
 // MAP feature of bluring and formating kml data size
 blur.addEventListener('input', function () {
-    vector.setBlur(parseInt(blur.value, 10));
+    for (var i = 1; i < all_layers.length; i++){
+        all_layers[i].setBlur(parseInt(blur.value, 10));
+    }
+    // vector.setBlur(parseInt(blur.value, 10));
   });
   
   radius.addEventListener('input', function () {
-    vector.setRadius(parseInt(radius.value, 10));
+    for (var i = 1; i < all_layers.length; i++){
+        all_layers[i].setRadius(parseInt(radius.value, 10));
+    }
+   //  vector.setRadius(parseInt(radius.value, 10));
   });
 
-
+/*
 // MAP feature of adding pop ups
 // useful helper to get Long_lat
-const popup = new Overlay({
+const coord_popup = new Overlay({
   element: document.getElementById('long_lat_popup'),
   positioning: 'bottom-center',
   stopEvent: false,
 });
-map.addOverlay(popup);
+map.addOverlay(coord_popup);
 
 // use this as example for techincal task!
-const element = popup.getElement();
+const coord_element = coord_popup.getElement();
 map.on('click', function (evt) {
     const coordinate = evt.coordinate;
     const hdms = toStringHDMS(toLonLat(coordinate));
-    popup.setPosition(coordinate);
-    let popover = bootstrap.Popover.getInstance(element);
+    coord_popup.setPosition(coordinate);
+    let popover = bootstrap.Popover.getInstance(coord_element);
     if (popover) {
       popover.dispose();
     }
-    popover = new bootstrap.Popover(element, {
+    popover = new bootstrap.Popover(coord_element, {
       animation: false,
-      container: element,
+      container: coord_element,
       content: '<p>The location you clicked was:</p><code>' + hdms + '</code>',
       html: true,
       placement: 'top',
@@ -256,7 +262,7 @@ map.on('click', function (evt) {
     });
     popover.show();
 });
-  
+  */
 
 // MAP feature: MARKERS !
 // https://openlayers.org/en/latest/examples/overlay.html
@@ -275,7 +281,52 @@ for (var i = 0; i < markers.length; i++){
 
 }
 
+const icon_popup = new Overlay({
+    element: document.getElementById('icon_popup'),
+    positioning: 'bottom-center',
+    stopEvent: false,
+  });
+  map.addOverlay(icon_popup);
+
+const icon_element = icon_popup.getElement()
+map.on('click', function (evt) {
+    let popover = bootstrap.Popover.getInstance(icon_element);
+    if (popover) {
+        popover.dispose();
+    }
+    const coordinate = evt.coordinate;
+    const hdms = toStringHDMS(toLonLat(coordinate));
+    const LonLat_clicked = toLonLat(coordinate)
+    for(let i = 0; i < markers.length; i++){
+        if (check_if_clicked(LonLat_clicked, markers[i]) == true){
+            icon_popup.setPosition(coordinate);
+            let popover = bootstrap.Popover.getInstance(icon_element);
+            if (popover) {
+            popover.dispose();
+            }
+            popover = new bootstrap.Popover(icon_element, {
+            animation: false,
+            container: icon_element,
+            content: markers[i]["text"],
+            html: true,
+            placement: 'top',
+            title: "Title",
+            });
+            popover.show();
+        }
+    }
+});
 // https://openlayers.org/en/latest/examples/popup.html
 // Add on click function to check if a user clicks near a marker +/- 1 degree?
 // use the popup code as a reference
 // use above map.on('click' ...) as example
+
+function check_if_clicked(clicked_coord, marker){
+    const marker_coord = marker["long_lat"]
+    const long_dif = Math.abs(clicked_coord[0] - marker_coord[0])
+    const lat_dif = Math.abs(clicked_coord[1] - marker_coord[1])
+    if (long_dif <= 0.5 & lat_dif <= 0.5){
+        return true
+    }
+    return false
+}
