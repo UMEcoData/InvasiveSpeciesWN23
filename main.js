@@ -79,25 +79,25 @@ const page_dict = {
         "origin_zoom": 5,
         "markers": [
             {
-                "id": "marker0",
+                "id": "0",
                 "long_lat": [-82.5, 42.8],
                 "text": "The Round Goby was first discovered to have been introduced to the Great Lakes in 1990 by fishermen in the St Clair River",
                 "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
-                "id": "marker1",
+                "id": "1",
                 "long_lat": [-86.3103, 42.3446],
                 "text": "Round Gobies are excellent bait theives, so they are a nuissance to anglers.",
                 "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
-                "id": "marker2",
+                "id": "2",
                 "long_lat": [-79.3812, 43.0133],
                 "text": "Some researchers have highlighted the possibility that there is a link between Type E avian botulism outbreaks and the Round Goby within Lakes Erie and Ontario.",
                 "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
-                "id": "marker3",
+                "id": "3",
                 "long_lat": [50, 50],
                 "text": "Hello from marker 3!",
                 "link": ""
@@ -305,7 +305,7 @@ for (var i = 0; i < markers.length; i++){
 }
 
 const icon_popup = new Overlay({
-    element: document.getElementById('icon_popup'),
+    element: document.getElementById('popover'),
     positioning: 'bottom-center',
     stopEvent: false,
   });
@@ -328,8 +328,8 @@ map.on('click', function (evt) {
             container: icon_element,
             content: markers[i]["text"],
             html: true,
+            template: 	'<div id="popover" class="popover" role="tooltip"><div class="arrow"></div><div class="popover-body"></div></div>',
             placement: 'top',
-            title: "Title",
             });
             popover.show();
         }
@@ -339,6 +339,11 @@ map.on('click', function (evt) {
 // Add on click function to check if a user clicks near a marker +/- 1 degree?
 // use the popup code as a reference
 // use above map.on('click' ...) as example
+
+function hide_popup(){
+    let element = document.getElementById('popover')
+    element.style.display = "none"
+}
 
 function check_if_clicked(clicked_coord, marker){
     const marker_coord = marker["long_lat"]

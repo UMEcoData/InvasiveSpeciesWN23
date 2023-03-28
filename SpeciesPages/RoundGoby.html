@@ -17,14 +17,14 @@
         background-color: #0FF;
         opacity: 0.5;
       }
-    .popup {
+
+    .popover-body{
         min-width: 200px;
-      }
-    .popover-content{
-        background-color: gray;
-        color: black;
+        background-color: rgb(194, 194, 194, 0.8);
+        color :black;
+        font-weight: strong;
         font-family: "Lucida Console", "Courier New", monospace;
-        border: 1px solid black
+        border-radius: 25px;
     }
 
     
@@ -68,7 +68,11 @@
     <div id="show_map">
         <div id="map">
          
-            <div id="icon_popup" class="icon_popup popup"></div>
+            <div id="popover" class="popover" role="tooltip">
+                <div class="arrow"></div>
+                <div class="popover-body"></div>
+            </div>
+
             <img src="/Icons/pin.png" id="marker0" class="marker" />
             <img src="/Icons/pin.png" id="marker1" class="marker" />
             <img src="/Icons/pin.png" id="marker2" class="marker" />
