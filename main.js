@@ -106,6 +106,7 @@ const page_dict = {
     }, 
     "/SpeciesPages/ZebraQuaggaMussels.html": {
         "kml_data": ["quagga_mussel.kml"],
+        "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
         "invasive_loc": michigan_loc,
         "origin_loc": quagga_blacksea_origin,
         "invasive_zoom": 5.7,
@@ -120,6 +121,7 @@ const page_dict = {
     }, 
     "/SpeciesPages/Alewife.html": {
       "kml_data": ["alewife.kml"],
+      "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
       "invasive_loc": michigan_loc,
       "origin_loc": atlantic_coast_loc,
       "invasive_zoom": 5.7,
@@ -290,7 +292,7 @@ map.on('click', function (evt) {
 for (var i = 0; i < markers.length; i++){
     let marker_dict = markers[i]
     const pos = fromLonLat(marker_dict["long_lat"]); //[16.3725, 48.208889]
-    const element_id = marker_dict["id"]
+    const element_id = "marker" + marker_dict["id"]
     console.log(element_id)
     const marker = new Overlay({
         position: pos,
