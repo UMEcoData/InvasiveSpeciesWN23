@@ -43,7 +43,7 @@ EDDMapS. 2023. Early Detection & Distribution Mapping System. The University of 
 // Optional variables to make dict easier
 const michigan_loc = fromLonLat([-84, 45])
 const london_loc = fromLonLat([-0.12755, 51.507222])
-const goby_origin_loc = fromLonLat([41.0, 42.0])
+const goby_origin_loc = fromLonLat([42, 42])
 const atlantic_coast_loc = fromLonLat([-61, 37.5])
 const quagga_blacksea_origin = fromLonLat([34.2993, 43.413])
 // const quagga_caspian_origin = fromLonLat([])
@@ -76,7 +76,7 @@ const page_dict = {
         "invasive_loc": michigan_loc,
         "origin_loc": goby_origin_loc,
         "invasive_zoom": 5.3,
-        "origin_zoom": 5,
+        "origin_zoom": 4.5,
         "markers": [
             {
                 "id": "0",
@@ -98,9 +98,15 @@ const page_dict = {
             },
             {
                 "id": "3",
-                "long_lat": [50, 50],
-                "text": "Hello from marker 3!",
-                "link": ""
+                "long_lat": [51.37, 41.54],
+                "text": "The Round Goby is originally from the Black Sea (left) and the Caspian Sea (right). They've invaded the Baltic Sea and the Great lakes Region. They traveled through balast water on ships.",
+                "link": "https://www.invasivespeciesinfo.gov/subject/ballast-water#:~:text=Ballast%20water%20is%20fresh%20or,required%20due%20to%20rough%20seas."
+            },
+            {
+                "id": "4",
+                "long_lat": [-76.9, 42.9],
+                "text": "In 2021, the Round Goby was found in the Cayuga Lake, one of New York's finger lakes.",
+                "link": "https://en.wikipedia.org/wiki/Round_goby#:~:text=Defined%20as%20a%20euryhaline%20bottom,the%20North%20American%20Great%20Lakes."
             }
         ]
     }, 
@@ -255,7 +261,7 @@ blur.addEventListener('input', function () {
    //  vector.setRadius(parseInt(radius.value, 10));
   });
 
-/*
+
 // MAP feature of adding pop ups
 // useful helper to get Long_lat
 const coord_popup = new Overlay({
@@ -285,7 +291,7 @@ map.on('click', function (evt) {
     });
     popover.show();
 });
-  */
+
 
 // MAP feature: MARKERS !
 // https://openlayers.org/en/latest/examples/overlay.html
