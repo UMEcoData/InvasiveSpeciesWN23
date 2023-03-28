@@ -72,31 +72,32 @@ E/W correspond to long_lat[0]
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
         "kml_data": ["roundgoby.kml", "test_data.kml"],
+        "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
         "invasive_loc": michigan_loc,
         "origin_loc": goby_origin_loc,
         "invasive_zoom": 5.3,
         "origin_zoom": 5,
         "markers": [
             {
-                "id": 0,
+                "id": "marker0",
                 "long_lat": [-82.5, 42.8],
                 "text": "The Round Goby was first discovered to have been introduced to the Great Lakes in 1990 by fishermen in the St Clair River",
                 "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
-                "id": 1,
+                "id": "marker1",
                 "long_lat": [-86.3103, 42.3446],
                 "text": "Round Gobies are excellent bait theives, so they are a nuissance to anglers.",
                 "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
-                "id": 2,
+                "id": "marker2",
                 "long_lat": [-79.3812, 43.0133],
                 "text": "Some researchers have highlighted the possibility that there is a link between Type E avian botulism outbreaks and the Round Goby within Lakes Erie and Ontario.",
                 "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
             },
             {
-                "id": 3,
+                "id": "marker3",
                 "long_lat": [50, 50],
                 "text": "Hello from marker 3!",
                 "link": ""
@@ -143,6 +144,7 @@ const species_dict = page_dict[currentPage]
 const invasive_loc = species_dict["invasive_loc"] // fromLonLat([-0.12755, 51.507222]);
 const origin_loc = species_dict["origin_loc"] // fromLonLat([-84, 45]);
 const kml_data_array = species_dict["kml_data"]
+const kml_gradient_array = species_dict["kml_gradient"]
 const invasive_zoom = species_dict["invasive_zoom"]
 const origin_zoom = species_dict["origin_zoom"]
 const markers = species_dict["markers"]
@@ -171,6 +173,7 @@ for (var i = 0; i < kml_data_array.length; i++){
             url: "/geoData/".concat(kml_data_array[i]),
             format: new KML(),
         }),
+        gradient: kml_gradient_array[i],
         declutter : true,
       });
       all_layers.push(vector)
@@ -287,7 +290,7 @@ map.on('click', function (evt) {
 for (var i = 0; i < markers.length; i++){
     let marker_dict = markers[i]
     const pos = fromLonLat(marker_dict["long_lat"]); //[16.3725, 48.208889]
-    const element_id = "marker".concat(marker_dict["id"])
+    const element_id = marker_dict["id"]
     console.log(element_id)
     const marker = new Overlay({
         position: pos,
@@ -318,10 +321,6 @@ map.on('click', function (evt) {
     for(let i = 0; i < markers.length; i++){
         if (check_if_clicked(LonLat_clicked, markers[i]) == true){
             icon_popup.setPosition(coordinate);
-            let popover = bootstrap.Popover.getInstance(icon_element);
-            if (popover) {
-            popover.dispose();
-            }
             popover = new bootstrap.Popover(icon_element, {
             animation: false,
             container: icon_element,
@@ -346,5 +345,5 @@ function check_if_clicked(clicked_coord, marker){
     if (long_dif <= 0.5 & lat_dif <= 0.5){
         return true
     }
-    return false
+   return false
 }

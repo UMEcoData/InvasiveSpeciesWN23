@@ -18,8 +18,16 @@
         opacity: 0.5;
       }
     .popup {
-        min-width: 276px;
+        min-width: 200px;
       }
+    .popover-content{
+        background-color: gray;
+        color: black;
+        font-family: "Lucida Console", "Courier New", monospace;
+        border: 1px solid black
+    }
+
+    
   </style>
   <body>
     <div>Round Goby</div>
@@ -66,9 +74,9 @@
             <img src="/Icons/pin.png" id="marker2" class="marker" />
             <img src="/Icons/pin.png" id="marker3" class="marker" />
         </div>
-        <script type="module" src="/main.js"></script>
-        <button id="fly-to-origin">Fly to Invasive Species Origin</button>
-        <button id="fly-to-michigan">Fly to Michigan</button>
+            <script type="module" src="/main.js"></script>
+            <button id="fly-to-origin">Fly to Invasive Species Origin</button>
+            <button id="fly-to-michigan">Fly to Michigan</button>
     </div>
     <div id="show_recipes" style="display:none">
         <span>recipes</span>
