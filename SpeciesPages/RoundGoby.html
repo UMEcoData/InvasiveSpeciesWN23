@@ -5,10 +5,28 @@
     <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/display.js"></script>
-    
+    <script type="module" src="/main.js"></script>
     <title>Invasive Species Project Website</title>
   </head>
   <style>
+    html, body {
+        margin: 0;
+        height: 100%;
+        font-family: Tahoma, Trebuchet;
+        background-color: rgb(159, 177, 159);
+    }
+
+    h1 {
+        margin: 0px 30px 0px 30px;
+        font-size: 6vh;
+        padding: 2.5vh 0;
+    }
+    h2 {
+        margin: 0px 30px 0px 30px;
+        width: 70vw;
+        font-size: 3vh;
+    }
+ 
     .marker {
         width: 20px;
         height: 20px;
@@ -27,69 +45,86 @@
         border-radius: 25px;
     }
 
+    .header{
+        display:flex;
+        flex-direction: row;
+        background-color:rgb(161, 194, 196);
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .map-interaction{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .map-interaction > * {
+        margin-top: 10px;
+    }
+
+    #map{
+        margin-bottom: 25px;
+        max-width: 80vw;
+        max-height: 40vh;
+    }
+
     
   </style>
   <body>
-    <div>Round Goby</div>
-
-    <button onclick = "window.location.href='/index.html'">Menu</button>
-    <p>The Round Goby, similar to most invasive species, can flourish in many habitats and environments. That quality, paired with its agressive nature and high spawn rate, make the Round Goby a menace to the Great Lakes Region</p>
-
-    <p>
-        Possible things to add to this website!
-        Datapins -
-            (information on baltic sea and how they got to michigan), 
-            (information on where they were first found),
-            (where they're most harmful)
-
-
-    </p>
-    <!--<img src="">-->
-
-    <form>
-        <label for="radius">radius size</label>
-        <input id="radius" type="range" min="1" max="4" step="1" value="1"/>
-        <label for="blur">blur size</label>
-        <input id="blur" type="range" min="1" max="4" step="1" value="3"/>
-    </form>
-
-    <div>
-        <button onclick="showMap()">Map</button>
-        <button onclick="showRecipes()">Recipes</button>
-        <button onclick="showAnalyses()">Analyses</button>
+    <div class="header">
+        <h1 style="font-size:20px"><a href='/index.html' >Menu</a></h1>
+        <h1>Invasive Species Project - Round Goby</h1>
     </div>
-
-    <p>Map Usage</p>
-    <ul>
-        <li>Use the radius and blur bar to modify the map display. The data, taken from EDDMaps, shows reported sightings of the species</li>
-        <li>click the "Fly to Invasive Species Origin" button to see where the species orginated from</li>
-        <li>Etc.</li>
-      </ul>
+    <h2 >The Round Goby, similar to most invasive species, can flourish in many habitats and environments. That quality, paired with its agressive nature and high spawn rate, make the Round Goby a menace to the Great Lakes Region </h2>
+    <div class="map-interaction">
+        <form class="modify-map">
+            <label for="radius">radius size</label>
+            <input id="radius" type="range" min="1" max="4" step="1" value="1"/>
+            <label for="blur">blur size</label>
+            <input id="blur" type="range" min="1" max="4" step="1" value="3"/>
+        </form>
+        <button id="fly-to-origin">Fly to Invasive Species Origin</button>
+        <button id="fly-to-michigan">Fly to Michigan</button>
+        <div style="display:none">
+            <button onclick="showMap()">Map</button>
+            <button onclick="showRecipes()">Recipes</button>
+            <button onclick="showAnalyses()">Analyses</button>
+        </div>
+    </div>
     <div id="show_map">
         <div id="map">
-
             <div id="long_lat_popup"> </div>
-         
             <div id="popover" class="popover" role="tooltip">
                 <div class="arrow"></div>
                 <div class="popover-body"></div>
             </div>
-
             <img src="/Icons/pin.png" id="marker0" class="marker" />
             <img src="/Icons/pin.png" id="marker1" class="marker" />
             <img src="/Icons/pin.png" id="marker2" class="marker" />
             <img src="/Icons/pin.png" id="marker3" class="marker" />
             <img src="/Icons/pin.png" id="marker4" class="marker" />
         </div>
-            <script type="module" src="/main.js"></script>
-            <button id="fly-to-origin">Fly to Invasive Species Origin</button>
-            <button id="fly-to-michigan">Fly to Michigan</button>
     </div>
     <div id="show_recipes" style="display:none">
         <span>recipes</span>
     </div>
     <div id="show_analyses" style="display:none">
         <span>analyses</span>
+    </div>
+
+    <div>
+        <h3>Solutions</h3>
+        <p>Marketing and eating invasive species has been suggested by some environmentalists and ecologists. Below are some examples of how this method could be applied to the Round Goby. Because the Round Goby originates from the Black and Caspian Seas, countries such as Bulgaria and Ukraine have some recipes featuring gobies and other fish.</p>
+
+        <ul>
+            <li><a href="https://bonapeti.com/recipes/r-50965-Fish_Soup_with_Gobies">Fish Soup</a></li>
+            <li><a href="https://ukrainian-recipes.com/tag/goby-fish">Ukrainian Fried Goby</a></li>
+            <li><a href="https://www.kashkaval-tourist.com/7-mouth-watering-bulgarian-fish-and-seafood-dishes/">Bulgarian Roe dip: tarama hayver</a></li>
+            <li><a href="https://www.kashkaval-tourist.com/7-mouth-watering-bulgarian-fish-and-seafood-dishes/">Fried or Grilled wl a side of fries or cabbage and carrot salad</a></li>
+        </ul>
     </div>
   </body>
 </html>
