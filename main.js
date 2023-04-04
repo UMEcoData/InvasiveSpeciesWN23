@@ -134,10 +134,16 @@ const page_dict = {
       "origin_zoom": 5.7,
       "markers": [
         {
-            "id": 0,
+            "id": "0",
             "long_lat": [-79.211260, 43.057321],
             "text": "The Alewife spread to Lake Erie and other Great Lakes through the Welland Canal",
             "link": "https://www.invasivespeciesinfo.gov/aquatic/fish-and-other-vertebrates/alewife"
+        },
+        {
+          "id": "1",
+          "long_lat": [-87.2220, 43.4501],
+          "text": "In 2022, Alewives experienced a larger-than-usual seasonal die-off in Lake Michigan; officials believe this phenomenon is from natural causes rather than disease and/or pollution.",
+          "link": "https://www.michigan.gov/dnr/about/newsroom/releases/2022/06/22/lake-michigan-experiencing-seasonal-alewife-die-off"
         }
       ]
   }, 
