@@ -8,6 +8,19 @@
     <!-- <link rel="stylesheet" href="/styleSheets/species_style.css"> -->
     <title>Zebra and Quagga Mussels</title>
   </head>
+  <style>
+    .marker {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #088;
+        border-radius: 10px;
+        background-color: #0FF;
+        opacity: 0.5;
+      }
+    .popup {
+        min-width: 276px;
+      }
+  </style>
   <body>
     <button onclick = "window.location.href='/index.html'">Menu</button>
     <h1>Zebra and Quagga Mussels</h1>
@@ -51,7 +64,11 @@
         <button onclick="showAnalyses()">Analyses</button>
     </div>
     <div id="show_map">
-        <div id="map"></div>
+        <div id="map">
+          <!-- fix the pop up and marker styling -->
+          <div id="long_lat_popup" class="popup"></div>
+          <img src="/Icons/pin.png" id="markerog1" class="marker" />
+        </div>
         <script type="module" src="/main.js"></script>
         <button id="fly-to-origin">Fly to Invasive Species Origin</button>
         <button id="fly-to-michigan">Fly to Michigan</button>
