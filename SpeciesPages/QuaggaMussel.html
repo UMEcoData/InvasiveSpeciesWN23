@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/display.js"></script>
+    <link rel="stylesheet" href="species_style.css">
+    <title>Quagga Mussel</title>
+  </head>
+  <style>
+    html, body {
+        margin: 0;
+        height: 100%;
+        font-family: Tahoma, Trebuchet;
+        background-color: rgb(159, 177, 159);
+    }
+
+    h1 {
+        margin: 0px 30px 0px 30px;
+        font-size: 6vh;
+        padding: 2.5vh 0;
+    }
+    h2 {
+        margin: 0px 30px 0px 30px;
+        width: 70vw;
+        font-size: 3vh;
+    }
+ 
+    .marker {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #088;
+        border-radius: 10px;
+        background-color: #0FF;
+        opacity: 0.5;
+      }
+
+    .popover-body{
+        min-width: 200px;
+        background-color: rgb(194, 194, 194, 0.8);
+        color :black;
+        font-weight: strong;
+        font-family: "Lucida Console", "Courier New", monospace;
+        border-radius: 25px;
+    }
+
+    .header{
+        display:flex;
+        flex-direction: row;
+        background-color:rgb(161, 194, 196);
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .map-interaction{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .map-interaction > * {
+        margin-top: 10px;
+    }
+
+    #map{
+        margin-bottom: 25px;
+        max-width: 80vw;
+        max-height: 50vh;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+  </style>
+  <body>
+    <div class="header">
+      <h1 style="font-size:20px"><a href='/index.html' >Menu</a></h1>
+      <h1>Invasive Species Project - Quagga Mussels</h1>
+    </div>
+
+    <div class="content">
+        <div class="desc">
+            <p id="text">
+                Quagga mussels (Dreissena bugensis) are a cousin species of the Zebra mussel and are also 
+                invasive to the Great Lakes Region. Like the Zebra mussel, they are native to freshwaters 
+                in Russia and Ukraine but were introduced later in 1989 in a similar manner from 
+                transatlantic vessels. They are now also found in lakes in Nevada and California.
+            </p>
+
+            <p>
+                What makes these species great at invading is their rapid reproduction rate, their ability 
+                to attach to a variety of different surfaces, and they can disperse during any life stage 
+                actively or passively downstream.
+            </p>
+        </div>
+
+        <div class="map-interaction">
+            <form class="modify-map">
+                <label for="radius">radius size</label>
+                <input id="radius" type="range" min="1" max="4" step="1" value="1"/>
+                <label for="blur">blur size</label>
+                <input id="blur" type="range" min="1" max="4" step="1" value="3"/>
+            </form>
+            <button id="fly-to-origin">Fly to Invasive Species Origin</button>
+            <button id="fly-to-michigan">Fly to Michigan</button>
+        </div>
+
+
+        <div id="show_map">
+            <div id="map">
+                <img src="/Icons/pin.png" id="marker0" class="marker" />
+                <img src="/Icons/pin.png" id="marker1" class="marker" />
+            </div>
+            <div>
+                <script type="module" src="/main.js"></script>
+            </div>
+        </div>
+
+        <div id="sol">
+            <h3>Solutions</h3>
+                <p>Unfortunately, Quagga Mussels are not edible to humans due to the accumulation of toxins, pollutants, and microorganism within the mussel's body as they filter water. 
+                    The main form of eradication of this invasive species is to use a type of molluscide and the main form of prevention is to "clean, drain, and dry" boats before moving to another body of water.
+                </p>
+
+            <ul>
+                <li><a href="https://www.fws.gov/story/clean-drain-dry">Clean, Drain, and Dry</a></li>
+            </ul>
+        </div>
+
+        <div id="ref">
+            <h3>References</h3>
+            <ul>
+                <li><p></p></li>
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>
