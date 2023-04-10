@@ -28,12 +28,12 @@
     }
  
     .marker {
-        width: 20px;
+      width: 20px;
         height: 20px;
-        border: 1px solid #088;
+        border: 3px solid rgb(7, 67, 67);
         border-radius: 10px;
-        background-color: #0FF;
-        opacity: 0.5;
+        background-color: rgb(216, 101, 156);
+        opacity: 0.8;
       }
 
     .popover-body{
@@ -106,6 +106,10 @@
     <div id="show_map">
         <div id="map">
           <div id="long_lat_popup" class="popup"></div>
+          <div id="popover" class="popover" role="tooltip">
+            <div class="arrow"></div>
+            <div class="popover-body"></div>
+        </div>
           <img src="/Icons/pin.png" id="marker0" class="marker" />
           <img src="/Icons/pin.png" id="marker1" class="marker" />
         </div>
@@ -128,9 +132,14 @@
           <li><a href="https://www.pressherald.com/2011/06/01/smoked-alewives-spawn-ideas_2011-06-01/">Various Recipes w/ Smoked Alewives</a></li>
       </ul>
 
-      <h3>References</h3>
+      <h3 class = "content">References</h3>
       <ul>
+        <li><p>“Alewife.” Alewife | National Invasive Species Information Center, https://www.invasivespeciesinfo.gov/aquatic/fish-and-other-vertebrates/alewife. </p></li>
+        <li><p>“Alewife: Wisconsin Sea Grant.” Wisconsin Sea Grant | University of Wisconsin, 3 Jan. 2019, https://www.seagrant.wisc.edu/our-work/focus-areas/ais/invasive-species/invasive-species-fact-sheets/fish/alewife/. </p></li>
         <li><p>EDDMapS. 2023. Early Detection & Distribution Mapping System. The University of Georgia - Center for Invasive Species and Ecosystem Health. Available online at http://www.eddmaps.org/; last accessed April 10, 2023.</p></li>
+        <li><p>Gillies, Jeff. “Alewives: The Trouble They Cause and the Salmon That Love Them: Great Lakes Echo.” Great Lakes Echo | Environmental News of the Great Lakes Region, 24 Apr. 2014, https://greatlakesecho.org/2009/09/03/alewives-the-trouble-they-cause-and-the-salmon-that-love-them/. </p></li>
+        <li><p>“Lake Michigan Experiencing Seasonal Alewife Die-Off.” SOM - State of Michigan, https://www.michigan.gov/dnr/about/newsroom/releases/2022/06/22/lake-michigan-experiencing-seasonal-alewife-die-off.</p></li>
+        <li><p>“Managing the Lake Huron Fishery.” Great Lakes Fishery Commission Eforum, http://www.glfc.org/eforum/article3.html#:~:text=The%20alewife%2C%20a%20pelagic%20planktivore,in%20the%20basin%20by%201960. </p></li>
       </ul>
     </div>
   </body>
