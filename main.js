@@ -128,20 +128,85 @@ const page_dict = {
             }
         ]
     }, 
-    "/SpeciesPages/ZebraQuaggaMussels.html": {
-        "kml_data": ["quagga_mussel.kml"],
-        "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
-        "invasive_loc": michigan_loc,
-        "origin_loc": quagga_blacksea_origin,
-        "invasive_zoom": 5.7,
-        "origin_zoom": 5.7,
-        "markers": [
+    "/SpeciesPages/QuaggaMussel.html": {
+      "kml_data": ["quagga_mussel.kml"],
+      "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
+      "invasive_loc": michigan_loc,
+      "origin_loc": quagga_blacksea_origin,
+      "invasive_zoom": 5.3,
+      "origin_zoom": 4.5,
+      "markers": [
           {
-            "id": "og1",
-            "long_lat": [34.2993, 43.413],
-            "text": "Quagga Mussel Origin 1"
+              "id": "0",
+              "long_lat": [-82.5, 42.8],
+              "text": "The Round Goby was first discovered to have been introduced to the Great Lakes in 1990 by fishermen in the St Clair River",
+              "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
+          },
+          {
+              "id": "1",
+              "long_lat": [-86.3103, 42.3446],
+              "text": "Round Gobies are excellent bait theives, so they are a nuissance to anglers.",
+              "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
+          },
+          {
+              "id": "2",
+              "long_lat": [-79.3812, 43.0133],
+              "text": "Some researchers have highlighted the possibility that there is a link between Type E avian botulism outbreaks and the Round Goby within Lakes Erie and Ontario.",
+              "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
+          },
+          {
+              "id": "3",
+              "long_lat": [51.37, 41.54],
+              "text": "The Round Goby is originally from the Black Sea (left) and the Caspian Sea (right). They've invaded the Baltic Sea and the Great lakes Region. They traveled through balast water on ships.",
+              "link": "https://www.invasivespeciesinfo.gov/subject/ballast-water#:~:text=Ballast%20water%20is%20fresh%20or,required%20due%20to%20rough%20seas."
+          },
+          {
+              "id": "4",
+              "long_lat": [-76.9, 42.9],
+              "text": "In 2021, the Round Goby was found in the Cayuga Lake, one of New York's finger lakes.",
+              "link": "https://en.wikipedia.org/wiki/Round_goby#:~:text=Defined%20as%20a%20euryhaline%20bottom,the%20North%20American%20Great%20Lakes."
           }
-        ]
+      ]
+  }, 
+    "/SpeciesPages/ZebraMussel.html": {
+      "kml_data": ["zebra_mussel.kml"],
+      "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
+      "invasive_loc": michigan_loc,
+      "origin_loc": quagga_blacksea_origin,
+      "invasive_zoom": 5.3,
+      "origin_zoom": 4.5,
+      "markers": [
+          {
+              "id": "0",
+              "long_lat": [-82.5, 42.8],
+              "text": "The Round Goby was first discovered to have been introduced to the Great Lakes in 1990 by fishermen in the St Clair River",
+              "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
+          },
+          {
+              "id": "1",
+              "long_lat": [-86.3103, 42.3446],
+              "text": "Round Gobies are excellent bait theives, so they are a nuissance to anglers.",
+              "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
+          },
+          {
+              "id": "2",
+              "long_lat": [-79.3812, 43.0133],
+              "text": "Some researchers have highlighted the possibility that there is a link between Type E avian botulism outbreaks and the Round Goby within Lakes Erie and Ontario.",
+              "link": "https://nyis.info/invasive_species/round-goby/#:~:text=The%20round%20goby%20(Neogobius%20melanostomus,Clair%20River."
+          },
+          {
+              "id": "3",
+              "long_lat": [51.37, 41.54],
+              "text": "The Round Goby is originally from the Black Sea (left) and the Caspian Sea (right). They've invaded the Baltic Sea and the Great lakes Region. They traveled through balast water on ships.",
+              "link": "https://www.invasivespeciesinfo.gov/subject/ballast-water#:~:text=Ballast%20water%20is%20fresh%20or,required%20due%20to%20rough%20seas."
+          },
+          {
+              "id": "4",
+              "long_lat": [-76.9, 42.9],
+              "text": "In 2021, the Round Goby was found in the Cayuga Lake, one of New York's finger lakes.",
+              "link": "https://en.wikipedia.org/wiki/Round_goby#:~:text=Defined%20as%20a%20euryhaline%20bottom,the%20North%20American%20Great%20Lakes."
+          }
+      ]
     }, 
     "/SpeciesPages/Alewife.html": {
       "kml_data": ["alewife.kml"],
@@ -316,6 +381,26 @@ map.on('click', function (evt) {
     popover.show();
 });
 */
+// const coord_element = coord_popup.getElement();
+// map.on('click', function (evt) {
+//     const coordinate = evt.coordinate;
+//     const hdms = toStringHDMS(toLonLat(coordinate));
+//     coord_popup.setPosition(coordinate);
+//     let popover = bootstrap.Popover.getInstance(coord_element);
+//     if (popover) {
+//       popover.dispose();
+//     }
+//     popover = new bootstrap.Popover(coord_element, {
+//       animation: false,
+//       container: coord_element,
+//       content: '<p>The location you clicked was:</p><code>' + hdms + '</code>',
+//       html: true,
+//       placement: 'top',
+//       title: "[x, y] : North(+)/South(-) = y AND East(+)/West(-) = x ",
+//     });
+//     popover.show();
+// });
+
 
 // MAP feature: MARKERS !
 // https://openlayers.org/en/latest/examples/overlay.html

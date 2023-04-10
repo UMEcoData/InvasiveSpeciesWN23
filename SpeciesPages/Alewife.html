@@ -9,6 +9,24 @@
     <title>Invasive Species Project Website</title>
   </head>
   <style>
+    html, body {
+        margin: 0;
+        height: 100%;
+        font-family: Tahoma, Trebuchet;
+        background-color: rgb(159, 177, 159);
+    }
+
+    h1 {
+        margin: 0px 30px 0px 30px;
+        font-size: 6vh;
+        padding: 2.5vh 0;
+    }
+    h2 {
+        margin: 0px 30px 0px 30px;
+        width: 70vw;
+        font-size: 3vh;
+    }
+ 
     .marker {
         width: 20px;
         height: 20px;
@@ -17,14 +35,52 @@
         background-color: #0FF;
         opacity: 0.5;
       }
-    .popup {
-        min-width: 276px;
-      }
+
+    .popover-body{
+        min-width: 200px;
+        background-color: rgb(194, 194, 194, 0.8);
+        color :black;
+        font-weight: strong;
+        font-family: "Lucida Console", "Courier New", monospace;
+        border-radius: 25px;
+    }
+
+    .header{
+        display:flex;
+        flex-direction: row;
+        background-color:rgb(161, 194, 196);
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .map-interaction{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .map-interaction > * {
+        margin-top: 10px;
+    }
+
+    #map{
+        margin-bottom: 25px;
+        max-width: 80vw;
+        max-height: 40vh;
+    }
+
+    .content {
+        padding: 10px;
+    }
   </style>
   <body>
-    <div>Alewife</div>
-    <button onclick = "window.location.href='/index.html'">Menu</button>
-    <p>
+    <div class="header">
+      <h1 style="font-size:20px"><a href='/index.html' >Menu</a></h1>
+      <h1>Invasive Species Project - The Alewife</h1>
+    </div>
+    <p class = "content">
     The Alewife (Alosa pseudoharengus) is an invasive species in the Great Lakes native to the Atlantic Ocean. They first appeared in Lake Ontario in the 1870s, and spread to Lake Erie and other Great Lakes through the Welland Canal in the 20th century. These fish are predators of baby lake trout, who are themselves major predators in the lakes. These trout have not evolved to successfully avoid the alewives. In addition, alewife tissue consists of a chemical that breaks down an essential vitamin for the young trouts’ development.
     <br> <br> Pacific Salmon, a species that generates billions of dollars in fishing revenue annually in the Great Lakes, flourish on an alewife diet. Salmon were originally released in mass amounts into Lake Michigan in 1966 to control alewife populations, which led to their domination of the Great Lakes’ recreational fishing industry. This complicates matters because, while alewives are detrimental to the lake trout population, they also provide economic benefits through their relationship to salmon.
     </p>
@@ -32,18 +88,20 @@
    
     <!--<img src="">-->
 
-    <form>
-      <label for="radius">radius size</label>
-      <input id="radius" type="range" min="1" max="5" step="1" value="3"/>
-      <label for="blur">blur size</label>
-      <input id="blur" type="range" min="1" max="5" step="1" value="5"/>
-  </form>
+    <div class="map-interaction">
+      <form class="modify-map">
+          <label for="radius">radius size</label>
+          <input id="radius" type="range" min="1" max="4" step="1" value="1"/>
+          <label for="blur">blur size</label>
+          <input id="blur" type="range" min="1" max="4" step="1" value="3"/>
+      </form>
+      <button id="fly-to-origin">Fly to Invasive Species Origin</button>
+      <button id="fly-to-michigan">Fly to Michigan</button>
+      <div style="display:none">
+          <button onclick="showMap()">Map</button>
+      </div>
+  </div>
 
-    <div>
-        <button onclick="showMap()">Map</button>
-        <button onclick="showRecipes()">Recipes</button>
-        <button onclick="showAnalyses()">Analyses</button>
-    </div>
 
     <div id="show_map">
         <div id="map">
@@ -52,14 +110,23 @@
           <img src="/Icons/pin.png" id="marker1" class="marker" />
         </div>
         <script type="module" src="/main.js"></script>
-        <button id="fly-to-origin">Fly to Invasive Species Origin</button>
-        <button id="fly-to-michigan">Fly to Michigan</button>
     </div>
     <div id="show_recipes" style="display:none">
         <span>recipes</span>
     </div>
     <div id="show_analyses" style="display:none">
         <span>analyses</span>
+    </div>
+    <div>
+      <h3 class = "content">Solutions</h3>
+      <p class = "content">
+        One method for controlling invasive species is by eating said species; this practice is called Invasivorism. Below are some recipes containing Alewives.
+      </p>
+
+      <ul>
+          <li><a href="https://www.pressherald.com/2014/05/29/green-plate-special-smoked-alewife-and-corn-risotto/">Alewife and Corn Risotto</a></li>
+          <li><a href="https://www.pressherald.com/2011/06/01/smoked-alewives-spawn-ideas_2011-06-01/">Various Recipes w/ Smoked Alewives</a></li>
+      </ul>
     </div>
   </body>
 </html>
