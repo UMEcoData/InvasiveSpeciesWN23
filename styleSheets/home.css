@@ -3,6 +3,9 @@ html, body {
     height: 100%;
     font-family: Tahoma, Trebuchet;
     background-color: rgb(159, 177, 159);
+    display:flex;
+    align-items: center;
+    flex-direction: column;
   }
 
 .header{
@@ -10,6 +13,7 @@ html, body {
     flex-direction: row;
     background-color:rgb(161, 194, 196);
     align-items: center;
+    width: 100vw;
     margin-bottom: 20px;
 }
 
@@ -20,7 +24,7 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     margin: 50px 20px 20px 20px;
-    gap: 20px 20px
+    gap: 20px 20px;
   }
   .cell {
     background-color: gray;
@@ -44,9 +48,11 @@ html, body {
     padding: 2.5vh 0;
   }
   h2 {
-    margin: 0px 30px 0px 30px;
+    margin: 0px;
     width: 50vw;
     font-size: 3vh;
+    text-align:center;
+
   }
   h3 {
     margin: 0px 30px 0px 30px;

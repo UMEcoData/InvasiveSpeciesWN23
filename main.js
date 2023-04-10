@@ -71,8 +71,8 @@ E/W correspond to long_lat[0]
 */
 const page_dict = {
     "/SpeciesPages/RoundGoby.html": {
-        "kml_data": ["roundgoby.kml", "test_data.kml"],
-        "kml_gradient": [['#f00', '#ff0', '#0f0', '#0ff', '#00f'], ['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
+        "kml_data": ["roundgoby.kml"],
+        "kml_gradient": [['#00f', '#0ff', '#0f0', '#ff0', '#f00']],
         "invasive_loc": michigan_loc,
         "origin_loc": goby_origin_loc,
         "invasive_zoom": 5.3,
@@ -107,6 +107,24 @@ const page_dict = {
                 "long_lat": [-76.9, 42.9],
                 "text": "In 2021, the Round Goby was found in the Cayuga Lake, one of New York's finger lakes.",
                 "link": "https://en.wikipedia.org/wiki/Round_goby#:~:text=Defined%20as%20a%20euryhaline%20bottom,the%20North%20American%20Great%20Lakes."
+            },
+            {
+                "id": "5",
+                "long_lat": [-82.405, 45.0],
+                "text": "The Round Goby can survive in both fresh and salt water, contributing to their adapyability, a key quality of invasive species.",
+                "link": "https://www.extinction.photo/species/round-goby/#:~:text=The%20Round%20goby%20is%20a,on%20their%20first%20dorsal%20fin."
+            },
+            {
+                "id": "6",
+                "long_lat": [-81.51, 44.2],
+                "text": "Negative: the Round Goby has proven to be large consumers of smallmouth bass eggs, which are a local species. When they are eaten by bigger fish, they can pass heavy metals up food chain.",
+                "link": "https://www.extinction.photo/species/round-goby/#:~:text=The%20Round%20goby%20is%20a,on%20their%20first%20dorsal%20fin."
+            },
+            {
+                "id": "7",
+                "long_lat": [-83.51, 45.7],
+                "text": "Positive: Round Gobies help control quagga and zebra mussels populations and serve as a food source to endangered species like the Lake Erie watersnake and even the smallmouth bass itself. Its role in the Great Lakes Region can be complicated.",
+                "link": "https://www.extinction.photo/species/round-goby/#:~:text=The%20Round%20goby%20is%20a,on%20their%20first%20dorsal%20fin."
             }
         ]
     }, 
@@ -267,7 +285,7 @@ blur.addEventListener('input', function () {
    //  vector.setRadius(parseInt(radius.value, 10));
   });
 
-
+/*
 // MAP feature of adding pop ups
 // useful helper to get Long_lat
 const coord_popup = new Overlay({
@@ -297,7 +315,7 @@ map.on('click', function (evt) {
     });
     popover.show();
 });
-
+*/
 
 // MAP feature: MARKERS !
 // https://openlayers.org/en/latest/examples/overlay.html
